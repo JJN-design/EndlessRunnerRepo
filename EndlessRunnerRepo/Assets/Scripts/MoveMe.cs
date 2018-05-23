@@ -2,27 +2,39 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveMe : MonoBehaviour {
+public class MoveMe : MonoBehaviour { 
 
-	// Use this for initialization
-	void Start () {
-	}
-	
-	// Update is called once per frame
-	void Update () {
-            
-            transform.position = transform.position + new Vector3(0, 0, -0.1f);
+    public List<Transform> positions = new List<Transform>();
+    int currentPos;
 
-       if (Input.GetKey(KeyCode.A))
+    public float speed;
+    public Transform midPos;
+    public Transform rightPos;
+    public Transform leftPos;
+
+    private Transform targetPos;
+
+    void Start()
+    {
+        targetPos = midPos;
+    }
+
+    void Update()
+    {
+
+        this.transform.position = Vector3.Lerp(this.transform.position, targetPos.position, speed * Time.deltaTime);
+
+        if (Input.GetKeyDown(KeyCode.A))
         {
-            transform.position = transform.position + new Vector3(0.4f, 0, 0);
+            currentPos--;
         }
-       if (Input.GetKey(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D))
         {
-            transform.position = transform.position + new Vector3(-0.4f, 0, 0);
+            currentPos++;
         }
 
-        }
+        targetPos = positions[currentPos];
 
     }
 
+  }
