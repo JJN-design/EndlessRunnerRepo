@@ -28,7 +28,7 @@ public class BasicTrigger : MonoBehaviour {
     {
        if (other.tag == "Player")
         {
-            Destroy(other.gameObject);
+            other.gameObject.GetComponentInParent<Player>().runningSpeed = 0;
         }
     }
 }
