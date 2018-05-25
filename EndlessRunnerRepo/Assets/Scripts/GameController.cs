@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
-    public GameObject groundPiece;
-    public GameObject groundPieceLaser;
-    public GameObject groundPiecePillar;
+    //public GameObject groundPiece;
+    //public GameObject groundPiece_Laser_Left;
+    //public GameObject groundPiece_Pillar_Left;
+    //public GameObject groundPiece_Pillar_Right;
+    //public GameObject groundPiece_Diamond_Center;
+    //public GameObject groundPiece_Diamond_Left;
 
     public int groundPieceCounter = 0;
     public int depthOfGroundPiece = 2;
@@ -14,34 +17,19 @@ public class GameController : MonoBehaviour {
     public float playerPositionCounter = 0;
     public GameObject player;
 
+    public List<GameObject> groundPieces = new List<GameObject>();
+
     private void BuildGround()
     {
-
-        GameObject groundPieceToPlace = null;
-        int randomPiece = Random.Range(0, 3);
-
-        if (randomPiece == 0)
-        {
-            groundPieceToPlace = groundPiece;
-        }
-        else
-            if (randomPiece == 1)
-        {
-            groundPieceToPlace = groundPieceLaser;
-        }
-        else
-            if (randomPiece == 2)
-        {
-            groundPieceToPlace = groundPiecePillar;
-        }
-
-        Instantiate(groundPieceToPlace, Vector3.forward * groundPieceCounter * depthOfGroundPiece, Quaternion.identity);
+        Instantiate(groundPieces[Random.Range(0, groundPieces.Count)],
+            Vector3.forward * groundPieceCounter * depthOfGroundPiece,
+            Quaternion.identity);
         groundPieceCounter++;
     }
 
     void Update()
     {
-        if (player.transform.position.z > playerPositionCounter) ;
+        if (player.transform.position.z > playerPositionCounter)
         {
             playerPositionCounter += depthOfGroundPiece;
             BuildGround();

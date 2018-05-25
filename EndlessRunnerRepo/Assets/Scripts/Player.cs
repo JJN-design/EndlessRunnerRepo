@@ -6,7 +6,7 @@ public class Player : MonoBehaviour {
 
     public GameObject mainCamera;
     public float runningSpeed = 6;
-    int depthOfGroundPiece = 2;
+    
 
     public GameObject playerObject;
 
