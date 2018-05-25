@@ -10,6 +10,11 @@ public class PlayerInteraction : MonoBehaviour {
         {
             myPlayer.runningSpeed = 0;
         }
+
+    if (other.tag == "Pickup")
+        {
+            Destroy(other.gameObject);
+        }
     }
 
 }
