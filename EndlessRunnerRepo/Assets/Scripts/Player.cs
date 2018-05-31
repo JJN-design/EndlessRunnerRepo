@@ -19,7 +19,7 @@ public class Player : MonoBehaviour {
     public float sidestepSpeed = 10;
     public GameObject targetPosition;
 
-    private void Start()
+    void Start()
     {
         targetPosition = middlePositionMarker;
     }

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour {
-    public Player myPlayer;
+    public Player myPlayer ;
+    public GameController gameController;
     private void OnTriggerEnter(Collider other)
     {
     if (other.tag == "Obstacle")
@@ -13,6 +14,7 @@ public class PlayerInteraction : MonoBehaviour {
 
     if (other.tag == "Pickup")
         {
+            gameController.GetComponent<Score>().score += 100;
             Destroy(other.gameObject);
         }
     }
